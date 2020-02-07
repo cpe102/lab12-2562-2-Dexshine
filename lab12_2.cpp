@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <cmath>
 using namespace std;
 
@@ -23,3 +24,29 @@ int main()
 }
 
 // Write definition of updateImage() and showImage() here
+void updateImage(bool image[N][M],int s,int x,int y)
+{
+    for(int i=0;i<N;i++)
+    {
+        for(int j=0;j<M;j++)
+        {   double temp = sqrt(((i-x)*(i-x))+((j-y)*(j-y)));
+
+            if(temp<=s-1) image[i][j] = 1;
+        }
+    }
+}
+void showImage(const bool image[N][M])
+{
+    cout << setfill ('-') << setw(72) << endl ;
+    for(int i=0;i<N;i++){
+        for(int j=0;j<M;j++){
+            if(image[i][j]==1) cout << "*";
+            else {cout << " ";}
+            
+        }
+        cout << endl << "|" << setw(70) << setfill(' ') << "|";
+        
+    }
+    cout << endl << setw(72) << setfill ('-')<<"\n";
+    
+}
